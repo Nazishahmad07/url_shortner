@@ -4,6 +4,7 @@ import { useAuth } from '../contexts/AuthContext';
 import { Link as LinkIcon, Copy, ExternalLink, BarChart3, Shield } from 'lucide-react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import DebugInfo from '../components/DebugInfo';
 
 const Home = () => {
   const { isAuthenticated } = useAuth();
@@ -176,6 +177,9 @@ const Home = () => {
           </div>
         </div>
       </div>
+      
+      {/* Debug Component - Remove this after fixing the issue */}
+      <DebugInfo />
     </div>
   );
 };
