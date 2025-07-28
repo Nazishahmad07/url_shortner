@@ -7,7 +7,12 @@ require('dotenv').config();
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: process.env.NODE_ENV === 'production' 
+    ? ['https://your-vercel-app.vercel.app', 'https://your-vercel-app.vercel.app/'] 
+    : ['http://localhost:3000'],
+  credentials: true
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -26,11 +31,20 @@ app.use('/api/profile', require('./routes/profile'));
 
 // Serve static assets if in production
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'));
-  
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-  });
+  // Check if build directory exists
+  const buildPath = path.join(__dirname, 'client', 'build');
+  if (require('fs').existsSync(buildPath)) {
+    app.use(express.static(buildPath));
+    
+    app.get('*', (req, res) => {
+      res.sendFile(path.join(buildPath, 'index.html'));
+    });
+  } else {
+    // If no build directory, just serve API
+    app.get('/', (req, res) => {
+      res.json({ message: 'URL Shortener API is running' });
+    });
+  }
 }
 
 const PORT = process.env.PORT || 5000;
