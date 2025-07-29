@@ -106,7 +106,7 @@ const Register = () => {
             <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-2">
               Username
             </label>
-            <div className="relative">
+            <div className="relative flex items-center">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <User className="h-5 w-5 text-gray-400" />
               </div>
@@ -117,7 +117,7 @@ const Register = () => {
                 value={formData.username}
                 onChange={handleChange}
                 required
-                className="input-field pl-10 pr-4 md:pr-10"
+                className="input-field w-full pl-12 pr-4"
                 placeholder="Choose a username"
                 minLength={3}
               />
@@ -128,7 +128,7 @@ const Register = () => {
             <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
               Email Address
             </label>
-            <div className="relative">
+            <div className="relative flex items-center">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <Mail className="h-5 w-5 text-gray-400" />
               </div>
@@ -139,7 +139,7 @@ const Register = () => {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="input-field pl-10 pr-4 md:pr-10"
+                className="input-field w-full pl-12 pr-4"
                 placeholder="Enter your email"
               />
             </div>
@@ -149,7 +149,7 @@ const Register = () => {
             <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
               Password
             </label>
-            <div className="relative">
+            <div className="relative flex items-center">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <Lock className="h-5 w-5 text-gray-400" />
               </div>
@@ -160,14 +160,15 @@ const Register = () => {
                 value={formData.password}
                 onChange={handleChange}
                 required
-                className="input-field pl-10 pr-12 md:pr-16"
+                className="input-field w-full pl-12 pr-12"
                 placeholder="Create a password"
                 minLength={6}
               />
               <button
                 type="button"
-                className="absolute inset-y-0 right-0 pr-3 flex items-center z-10"
+                className="absolute inset-y-0 right-0 pr-3 flex items-center z-20"
                 onClick={() => setShowPassword(!showPassword)}
+                tabIndex={-1}
               >
                 {showPassword ? (
                   <EyeOff className="h-5 w-5 text-gray-400" />
@@ -182,7 +183,7 @@ const Register = () => {
             <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-2">
               Confirm Password
             </label>
-            <div className="relative">
+            <div className="relative flex items-center">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <Lock className="h-5 w-5 text-gray-400" />
               </div>
@@ -193,14 +194,15 @@ const Register = () => {
                 value={formData.confirmPassword}
                 onChange={handleChange}
                 required
-                className="input-field pl-10 pr-12 md:pr-16"
+                className="input-field w-full pl-12 pr-12"
                 placeholder="Confirm your password"
                 minLength={6}
               />
               <button
                 type="button"
-                className="absolute inset-y-0 right-0 pr-3 flex items-center z-10"
+                className="absolute inset-y-0 right-0 pr-3 flex items-center z-20"
                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                tabIndex={-1}
               >
                 {showConfirmPassword ? (
                   <EyeOff className="h-5 w-5 text-gray-400" />
