@@ -82,7 +82,7 @@ const Login = () => {
                 value={formData.password}
                 onChange={handleChange}
                 required
-                className="input-field pl-10 pr-10"
+                className="input-field pl-10 pr-12"
                 placeholder="Enter your password"
               />
               <button
