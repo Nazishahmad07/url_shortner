@@ -252,58 +252,61 @@ const Dashboard = () => {
             <p className="text-gray-500 mt-2">No URLs found</p>
           </div>
         ) : (
-          <div className="space-y-4">
-            {filteredUrls.map((url) => (
-              <div key={url._id} className="border rounded-lg p-4 hover:bg-gray-50">
-                <div className="flex items-center justify-between">
-                  <div className="flex-1">
-                    <div className="flex items-center space-x-2 mb-2">
-                      <h4 className="font-medium text-gray-900">
-                        {url.title || 'Untitled URL'}
-                      </h4>
-                      <span className={`px-2 py-1 text-xs rounded-full ${
-                        url.isActive ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
-                      }`}>
-                        {url.isActive ? 'Active' : 'Inactive'}
-                      </span>
+          <div className="space-y-4 overflow-x-auto">
+            {/* Responsive wrapper for mobile */}
+            <div className="min-w-[320px]">
+              {filteredUrls.map((url) => (
+                <div key={url._id} className="border rounded-lg p-4 hover:bg-gray-50 mb-2">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                    <div className="flex-1 min-w-0">
+                      <div className="flex flex-wrap items-center space-x-2 mb-2">
+                        <h4 className="font-medium text-gray-900 truncate max-w-[180px] sm:max-w-[240px]">
+                          {url.title || 'Untitled URL'}
+                        </h4>
+                        <span className={`px-2 py-1 text-xs rounded-full ${
+                          url.isActive ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+                        }`}>
+                          {url.isActive ? 'Active' : 'Inactive'}
+                        </span>
+                      </div>
+                      <p className="text-sm text-gray-600 mb-2 break-all">
+                        {url.originalUrl}
+                      </p>
+                      <div className="flex flex-wrap items-center space-x-4 text-sm text-gray-500">
+                        <span className="truncate max-w-[120px]">Short: {url.shortUrl}</span>
+                        <span>Clicks: {url.clicks}</span>
+                        <span>Created: {new Date(url.createdAt).toLocaleDateString()}</span>
+                      </div>
                     </div>
-                    <p className="text-sm text-gray-600 mb-2 break-all">
-                      {url.originalUrl}
-                    </p>
-                    <div className="flex items-center space-x-4 text-sm text-gray-500">
-                      <span>Short: {url.shortUrl}</span>
-                      <span>Clicks: {url.clicks}</span>
-                      <span>Created: {new Date(url.createdAt).toLocaleDateString()}</span>
+                    <div className="flex items-center space-x-2 mt-2 sm:mt-0">
+                      <button
+                        onClick={() => copyToClipboard(url.shortUrl)}
+                        className="p-2 text-gray-400 hover:text-gray-600"
+                        title="Copy URL"
+                      >
+                        <Copy size={16} />
+                      </button>
+                      <a
+                        href={url.shortUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 text-gray-400 hover:text-gray-600"
+                        title="Visit URL"
+                      >
+                        <ExternalLink size={16} />
+                      </a>
+                      <button
+                        onClick={() => handleDeleteUrl(url._id)}
+                        className="p-2 text-red-400 hover:text-red-600"
+                        title="Delete URL"
+                      >
+                        <Trash2 size={16} />
+                      </button>
                     </div>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <button
-                      onClick={() => copyToClipboard(url.shortUrl)}
-                      className="p-2 text-gray-400 hover:text-gray-600"
-                      title="Copy URL"
-                    >
-                      <Copy size={16} />
-                    </button>
-                    <a
-                      href={url.shortUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 text-gray-400 hover:text-gray-600"
-                      title="Visit URL"
-                    >
-                      <ExternalLink size={16} />
-                    </a>
-                    <button
-                      onClick={() => handleDeleteUrl(url._id)}
-                      className="p-2 text-red-400 hover:text-red-600"
-                      title="Delete URL"
-                    >
-                      <Trash2 size={16} />
-                    </button>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         )}
       </div>

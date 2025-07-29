@@ -61,7 +61,7 @@ const Login = () => {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="input-field pl-10"
+                className="input-field pl-10 pr-4 md:pr-10"
                 placeholder="Enter your email"
               />
             </div>
@@ -82,12 +82,12 @@ const Login = () => {
                 value={formData.password}
                 onChange={handleChange}
                 required
-                className="input-field pl-10 pr-12"
+                className="input-field pl-10 pr-12 md:pr-16"
                 placeholder="Enter your password"
               />
               <button
                 type="button"
-                className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                className="absolute inset-y-0 right-0 pr-3 flex items-center z-10"
                 onClick={() => setShowPassword(!showPassword)}
               >
                 {showPassword ? (

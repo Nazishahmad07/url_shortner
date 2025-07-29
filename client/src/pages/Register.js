@@ -71,7 +71,7 @@ const Register = () => {
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
                 First Name
@@ -117,7 +117,7 @@ const Register = () => {
                 value={formData.username}
                 onChange={handleChange}
                 required
-                className="input-field pl-10"
+                className="input-field pl-10 pr-4 md:pr-10"
                 placeholder="Choose a username"
                 minLength={3}
               />
@@ -139,7 +139,7 @@ const Register = () => {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="input-field pl-10"
+                className="input-field pl-10 pr-4 md:pr-10"
                 placeholder="Enter your email"
               />
             </div>
@@ -160,13 +160,13 @@ const Register = () => {
                 value={formData.password}
                 onChange={handleChange}
                 required
-                className="input-field pl-10 pr-12"
+                className="input-field pl-10 pr-12 md:pr-16"
                 placeholder="Create a password"
                 minLength={6}
               />
               <button
                 type="button"
-                className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                className="absolute inset-y-0 right-0 pr-3 flex items-center z-10"
                 onClick={() => setShowPassword(!showPassword)}
               >
                 {showPassword ? (
@@ -193,13 +193,13 @@ const Register = () => {
                 value={formData.confirmPassword}
                 onChange={handleChange}
                 required
-                className="input-field pl-10 pr-12"
+                className="input-field pl-10 pr-12 md:pr-16"
                 placeholder="Confirm your password"
                 minLength={6}
               />
               <button
                 type="button"
-                className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                className="absolute inset-y-0 right-0 pr-3 flex items-center z-10"
                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
               >
                 {showConfirmPassword ? (
