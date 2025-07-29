@@ -15,7 +15,7 @@ const Navbar = () => {
   return (
     <nav className="bg-white shadow-lg">
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex flex-wrap justify-between items-center h-16 min-h-[4rem]">
           <Link to="/" className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-lg">U</span>
@@ -40,11 +40,11 @@ const Navbar = () => {
                   <Settings size={20} />
                   <span>Profile</span>
                 </Link>
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center space-x-2 min-w-0">
                   <div className="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center">
                     <User size={16} className="text-primary-600" />
                   </div>
-                  <span className="text-gray-700">{user?.username}</span>
+                  <span className="text-gray-700 truncate max-w-[100px] md:max-w-[150px]" title={user?.username}>{user?.username}</span>
                   <button
                     onClick={handleLogout}
                     className="flex items-center space-x-1 text-gray-600 hover:text-red-600 transition-colors"
